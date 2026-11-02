@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<Container version="2">
+  <Name>bravia-remote</Name>
+  <Repository>ghcr.io/grimiock-v1/bravia-remote:latest</Repository>
+  <Registry>https://github.com/GrimIock-v1/bravia-remote/pkgs/container/bravia-remote</Registry>
+  <Network>host</Network>
+  <Privileged>false</Privileged>
+  <Support>https://github.com/GrimIock-v1/bravia-remote/issues</Support>
+  <Project>https://github.com/GrimIock-v1/bravia-remote</Project>
+  <Overview>Phone-friendly web remote for older (non-Android) Sony BRAVIA TVs. D-pad, volume, inputs, power (wake-on-LAN), media keys. Uses host networking so wake-on-LAN broadcasts reach the TV. Open the WebUI on your phone and add it to your home screen.</Overview>
+  <Category>HomeAutomation: Tools:</Category>
+  <WebUI>http://[IP]:[PORT:8787]/</WebUI>
+  <TemplateURL>https://raw.githubusercontent.com/GrimIock-v1/bravia-remote/main/unraid/bravia-remote.xml</TemplateURL>
+  <Icon>https://raw.githubusercontent.com/GrimIock-v1/bravia-remote/main/unraid/icon.png</Icon>
+  <ExtraParams>--restart unless-stopped</ExtraParams>
+  <Config Name="TV IP address" Target="TV_IP" Default="10.0.0.61" Mode="" Description="IP address of the TV. Give it a DHCP reservation in your router so it doesn't change." Type="Variable" Display="always" Required="true" Mask="false">10.0.0.61</Config>
+  <Config Name="TV MAC address" Target="TV_MAC" Default="00:71:cc:4b:a0:63" Mode="" Description="TV's MAC address, used to wake it from standby." Type="Variable" Display="always" Required="false" Mask="false">00:71:cc:4b:a0:63</Config>
+  <Config Name="Web port" Target="PORT" Default="8787" Mode="" Description="Port the remote page is served on (host networking, so this is the port on your Unraid server)." Type="Variable" Display="always" Required="true" Mask="false">8787</Config>
+  <Config Name="PUID" Target="PUID" Default="99" Mode="" Description="User ID that owns the config files." Type="Variable" Display="advanced" Required="false" Mask="false">99</Config>
+  <Config Name="PGID" Target="PGID" Default="100" Mode="" Description="Group ID that owns the config files." Type="Variable" Display="advanced" Required="false" Mask="false">100</Config>
+  <Config Name="Config" Target="/config" Default="/mnt/user/appdata/bravia-remote" Mode="rw" Description="Stores the TV pairing." Type="Path" Display="advanced" Required="true" Mask="false">/mnt/user/appdata/bravia-remote</Config>
+</Container>
